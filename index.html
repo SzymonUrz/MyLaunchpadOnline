@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>MyLaunchpadOnline</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" href="static/assets/favicon.ico" type="static/assets/favicon.ico">
+</head>
+
+<body>
+    <div id="launchpad">
+        <!-- Kolumna Kick -->
+        <div class="column" id="kickColumn">
+            <div class="header">Kick</div>
+            
+            <button class="pad1" id="kick1">K1</button>
+            <button class="pad1" id="kick2">K2</button>
+            <button class="pad1" id="kick3">K3</button>
+            <button class="pad1" id="kick4">K4</button>
+            <button class="pad1" id="kick5">K5</button>
+            <button class="pad1" id="kick6">K6</button>
+            <button class="pad1" id="kick7">K7</button>
+            <button class="pad1" id="kick8">K8</button>
+
+            <div class="header">Volume</div>
+            <div class="volume-slider">
+                <input type="range" min="0" max="1" step="0.01" value="1" id="kickVolumeSlider" onchange="updateColumnVolume('kickColumn', this.value)">
+            </div>
+            
+        </div>
+
+        <!-- Kolumna Snare -->
+        <div class="column" id="snareColumn">
+            <div class="header">Snare</div>
+           
+            <button class="pad" id="snare1">S1</button>
+            <button class="pad" id="snare2">S2</button>
+            <button class="pad" id="snare3">S3</button>
+            <button class="pad" id="snare4">S4</button>
+            <button class="pad" id="snare5">S5</button>
+            <button class="pad" id="snare6">S6</button>
+            <button class="pad" id="snare7">S7</button>
+            <button class="pad" id="snare8">S8</button>
+
+            <div class="header">Volume</div>
+            <div class="volume-slider">
+                <input type="range" min="0" max="1" step="0.01" value="1" id="snareVolumeSlider" onchange="updateColumnVolume('snareColumn', this.value)">
+            </div>
+        </div>
+
+        <!-- Kolumna Clap -->
+        <div class="column" id="clapColumn">
+            <div class="header">Clap</div>
+            
+            <button class="pad1" id="clap1">C1</button>
+            <button class="pad1" id="clap2">C2</button>
+            <button class="pad1" id="clap3">C3</button>
+            <button class="pad1" id="clap4">C4</button>
+            <button class="pad1" id="clap5">C5</button>
+            <button class="pad1" id="clap6">C6</button>
+            <button class="pad1" id="clap7">C7</button>
+            <button class="pad1" id="clap8">C8</button>
+
+            <div class="header">Volume</div>
+            <div class="volume-slider">
+                <input type="range" min="0" max="1" step="0.01" value="1" id="clapVolumeSlider" onchange="updateColumnVolume('clapColumn', this.value)">
+            </div>
+        </div>
+
+        <!-- Kolumna Hihat -->
+        <div class="column" id="hihatColumn">
+            <div class="header">Hihat</div>
+            
+            <button class="pad" id="hihat1">H1</button>
+            <button class="pad" id="hihat2">H2</button>
+            <button class="pad" id="hihat3">H3</button>
+            <button class="pad" id="hihat4">H4</button>
+            <button class="pad" id="hihat5">H5</button>
+            <button class="pad" id="hihat6">H6</button>
+            <button class="pad" id="hihat7">H7</button>
+            <button class="pad" id="hihat8">H8</button>
+            
+            <div class="header">Volume</div>
+            <div class="volume-slider">
+                <input type="range" min="0" max="1" step="0.01" value="1" id="hihatVolumeSlider" onchange="updateColumnVolume('hihatColumn', this.value)">
+            </div>
+        </div>
+
+        <!-- Kolumna Bass -->
+        <div class="column" id="bassColumn">
+            <div class="header">Bass</div>
+           
+            <button class="pad1" id="bass1">B1</button>
+            <button class="pad1" id="bass2">B2</button>
+            <button class="pad1" id="bass3">B3</button>
+            <button class="pad1" id="bass4">B4</button>
+            <button class="pad1" id="bass5">B5</button>
+            <button class="pad1" id="bass6">B6</button>
+            <button class="pad1" id="bass7">B7</button>
+            <button class="pad1" id="bass8">B8</button>
+            
+            <div class="header">Volume</div>
+            <div class="volume-slider">
+                <input type="range" min="0" max="1" step="0.01" value="1" id="bassVolumeSlider" onchange="updateColumnVolume('bassColumn', this.value)">
+            </div>
+        </div>
+
+        <!-- Kolumna Melody -->
+        <div class="column" id="melodyColumn">
+            <div class="header">Melody</div>
+            
+            <button class="pad" id="melody1">M1</button>
+            <button class="pad" id="melody2">M2</button>
+            <button class="pad" id="melody3">M3</button>
+            <button class="pad" id="melody4">M4</button>
+            <button class="pad" id="melody5">M5</button>
+            <button class="pad" id="melody6">M6</button>
+            <button class="pad" id="melody7">M7</button>
+            <button class="pad" id="melody8">M8</button>
+
+            <div class="header">Volume</div>
+            <div class="volume-slider">
+                <input type="range" min="0" max="1" step="0.01" value="1" id="melodyVolumeSlider" onchange="updateColumnVolume('melodyColumn', this.value)">
+            </div>
+        </div>
+
+        <!-- Kolumna Fx -->
+        <div class="column" id="fxColumn">
+            <div class="header">Fx</div>
+           
+            <button class="pad1" id="fx1">F1</button>
+            <button class="pad1" id="fx2">F2</button>
+            <button class="pad1" id="fx3">F3</button>
+            <button class="pad1" id="fx4">F4</button>
+            <button class="pad1" id="fx5">F5</button>
+            <button class="pad1" id="fx6">F6</button>
+            <button class="pad1" id="fx7">F7</button>
+            <button class="pad1" id="fx8">F8</button>
+            <div class="header">Volume</div>
+
+            <div class="volume-slider">
+                <input type="range" min="0" max="1" step="0.01" value="1" id="fxVolumeSlider" onchange="updateColumnVolume('fxColumn', this.value)">
+            </div>
+        </div>
+
+        <!-- Kolumna Vocal -->
+        <div class="column" id="vocalColumn">
+            <div class="header">Vocal</div>
+            
+            <button class="pad" id="vocal1">V1</button>
+            <button class="pad" id="vocal2">V2</button>
+            <button class="pad" id="vocal3">V3</button>
+            <button class="pad" id="vocal4">V4</button>
+            <button class="pad" id="vocal5">V5</button>
+            <button class="pad" id="vocal6">V6</button>
+            <button class="pad" id="vocal7">V7</button>
+            <button class="pad" id="vocal8">V8</button>
+            
+            <div class="header">Volume</div>
+            <div class="volume-slider">
+                <input type="range" min="0" max="1" step="0.01" value="1" id="vocalVolumeSlider" onchange="updateColumnVolume('vocalColumn', this.value)">
+            </div>
+        </div>
+
+        
+        <div class="column">
+            <div class="header">Main Volume</div>
+            <br>
+            <div class="volume-slider-container">
+                <div class="slider-label top"><div class="header">+24db</div></div>
+                <div class="slider-label mid"><div class="header">__</div></div>
+                <div class="slider-label topmid"><div class="header">--</div></div>
+                <div class="slider-label bottom"><div class="header">-24db</div></div>
+                <div class="slider-label bottommid"><div class="header">--</div></div>
+                <input type="range" class="mainVolumeSlider" id="mainVolumeSlider" min="0" max="1" step="0.01" value="0.5">
+            <div class="column">
+                <div class="tempo-controls">
+                    <div class="header">Effects</div>
+                    <button id="increaseTempoButton">Tempo <b>+</b> </button>
+                    <button id="decreaseTempoButton">Tempo <b>-</b> </button>
+                </div>
+                <div class="knob_text">
+                <ul>
+                    <li class="header">Echo</li>
+                    <li class="header">Rvrb</li>
+                    <li class="header">Dist</li>
+                </ul>
+                </div>
+                <div class="knob_effect">
+                    <ul>
+                        <li class="header">
+                            <label class="switch">
+                            <input type="checkbox" id="echoSwitch">
+                            <span class="slider"></span>
+                            </label>
+                        </li>
+                        <li class="header">
+                            <label class="switch">
+                            <input type="checkbox" id="reverbSwitch">
+                            <span class="slider"></span>
+                            </label>
+                        </li>
+                        <li class="header">
+                            <label class="switch">
+                            <input type="checkbox" id="distortionSwitch">
+                            <span class="slider"></span>
+                            </label>
+                        </li>
+                    </ul>
+                    </div>
+                <ul>
+                    <li class="knob1 back">
+                      <span class="knob1 front"></span>
+                    </li>
+                    <li class="knob2 back">
+                      <span class="knob2 front"></span>
+                    </li>
+                    <li class="knob3 back">
+                      <span class="knob3 front"></span>
+                    </li>    
+                </ul>
+            </div>
+        </div>
+        <div class="container"></div>  
+            <button id="stopAllSoundsButton"><div class="header">Stop All</div></button>
+            <div class="pan-control">
+                <label for="panSlider"><div class="header">Pan</div></label>
+                <input type="range" id="panSlider" min="-1" max="1" step="0.1" value="0">
+            </div>
+            
+        </div>
+    <script src="static/scripts/main.js"></script>
+</body>
+</html>

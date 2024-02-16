@@ -1,0 +1,557 @@
+body {
+    margin: 0;
+    height: 100vh; /* Pełna wysokość widoku */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Wyśrodkowanie w pionie */
+    background-color: #0b061f;
+}
+
+#launchpad {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    margin: 50px auto; 
+    padding: 20px; /* padding wewnątrz ramki */
+    width: 80%; /* szerokość */
+    background-color: #49494970; /* Tło */
+    box-shadow: 0 4px 8px 0 rgba(121, 121, 121, 0.7); /* Cień dookoła ramki */
+    border-radius: 15px; /* Zaokrąglone rogi ramki */
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 2;
+    max-width: 1200px;
+}
+
+.header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2vw; 
+    color: white;
+    padding: 4px 2px 2px 2px;
+    text-align: center; 
+}
+
+.pad1 {
+    padding: 33px; /* Wielkość przycisku */
+    font-size: 16px; /* Rozmiar czcionki */
+    cursor: pointer; /* Kursor wskazujący na możliwość kliknięcia */
+    background-color: #1e6eb8; /* Kolor tła */
+    color: white; /* Kolor tekstu */
+    border: none; /* Brak obramowania */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    margin: 5px; /* Odstępy między przyciskami */
+    transition: background-color 0.3s ease; /* Animacja zmiany koloru tła */
+}
+
+.pad1:hover {
+    background-color: #013463; /* Zmiana koloru tła po najechaniu */
+}
+
+.pad1:active {
+    background-color: #013463; /* Zmiana koloru tła po kliknięciu */
+}
+
+.pad {
+    padding: 33px; /* Wielkość przycisku */
+    font-size: 16px; /* Rozmiar czcionki */
+    cursor: pointer; /* Kursor wskazujący na możliwość kliknięcia */
+    background-color: #30546b; /* Kolor tła */
+    color: white; /* Kolor tekstu */
+    border: none; /* Brak obramowania */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    margin: 5px; /* Odstępy między przyciskami */
+    transition: background-color 0.3s ease; /* Animacja zmiany koloru tła */
+}
+
+.pad:hover {
+    background-color: #1e333f; /* Zmiana koloru tła po najechaniu */
+}
+
+.pad:active {
+    background-color: #1e333f; /* Zmiana koloru tła po kliknięciu */
+}
+
+.pad.active,
+.pad1.active {
+    background-color: #f3cd52; /* Kolor aktywnego przycisku */
+}
+
+/*//////////////////////////// Suwak głosności */
+
+.column {
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.volume-slider {
+    margin-top: 5px;
+}
+
+.volume-slider input {
+    width: calc(100% - 10px);
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    .header {
+        font-size: 5vw;
+    }
+
+    .pad {
+        padding: 5px;
+        font-size: 0.8em;
+    }
+    .pad1 {
+        padding: 5px;
+        font-size: 0.8em;
+    }
+}
+
+.pad1.enlarged,
+.pad.enlarged {
+    transform: scale(1.03); 
+    transition: transform 50ms ease-out; /* Animacja */
+}
+
+/*suwak głowny main volume */
+
+.volume-slider-container {
+    position: relative;
+    height: 500px; /* Długości suwaka */
+    width: 500px; /* Zachowaj szerokość kontenera */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainVolumeSlider {
+    margin-bottom: -20px; /*góra dół suwak*/
+    margin-left: -290px;
+    transform: rotate(-90deg) translateX(45%);
+    margin-top: -10px;
+    height: 60px; 
+    width: 100%;
+}
+
+
+.mainVolumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #e74c3c;
+    width: 50px;
+    height: 50px;
+    border-radius: 10%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.mainVolumeSlider::-webkit-slider-thumb:hover {
+    background-color: #e74c3c;
+    border: 2px solid #dbdbdb;
+}
+
+
+input[type="range"] {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 70%; /* wysokosc suwaka*/
+    height: 50px; /* szerokosc suwaka */
+    border-radius: 5px;
+    background-color: #bdc3c7; /* Kolor tła suwaka */
+    outline: 0;
+}
+
+      input[type="range"]:not(#mainVolumeSlider) {
+        display: block;
+        -webkit-appearance: none;
+        background-color: #bdc3c7;
+        width: 80px;
+        height: 20px;
+        border-radius: 5px;
+        margin: 0 auto;
+        outline: 0;
+      }
+      input[type="range"]:not(#mainVolumeSlider)::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background-color: #e74c3c;
+        width: 20px;
+        height: 20px;
+        border-radius: 10%;
+        border: 2px solid white;
+        cursor: pointer;
+        transition: .3s ease-in-out;
+      }​
+        input[type="range"]::-webkit-slider-thumb:hover {
+          background-color: white;
+          border: 2px solid #e74c3c;
+        }
+        input[type="range"]::-webkit-slider-thumb:active {
+          transform: scale(1.3);
+        }
+
+
+      /*Liczby przy suwaku main*/
+
+        .slider-label {
+            position: absolute;
+            color: #dddddd; /* kolor */
+            font-size: 20px; /* rozmiar czcionki */
+        }
+        
+    
+        .slider-label.top {
+            margin-left: -130px;
+            top: -60px; /* góra-dół */
+            left: 48%;
+            transform: translateX(-48%);
+        }
+        
+        .slider-label.bottom {
+            margin-left: -130px;
+            bottom: 240px; /* góra-dół */
+            left: 48%;
+            transform: translateX(-50%);
+        }
+        .slider-label.mid {
+            margin-left: -130px;
+            bottom: 400px; /* góra-dół */
+            left: 48%;
+            transform: translateX(-50%);
+        }
+        .slider-label.topmid {
+            margin-left: -130px;
+            bottom: 465px; /* Eykieta pod suwakiem */
+            left: 48%;
+            transform: translateX(-50%);
+
+        }
+        .slider-label.bottommid {
+            margin-left: -130px;
+            bottom: 320px; /* Etykieta pod suwakiem */
+            left: 48%;
+            transform: translateX(-50%);
+        
+    
+        }
+        #stopAllSoundsButton {
+            border-radius: 5px;
+            background-color: #e74c3c;
+            margin-top: -50px; 
+        }
+        
+        
+/*ZMIANA TEMPA*/
+
+.tempo-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto; 
+}
+
+.tempo-controls button {
+   
+    padding: 20px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #2c20cc; /* Zielony kolor tła */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 5px 5px; /* Odstępy pomiędzy przyciskami */
+}
+
+.tempo-controls button:hover {
+    background-color: #101aa7; /* Ciemniejszy odcień zielonego */
+}
+
+.tempo-controls button:active {
+    transform: scale(0.95); /* Efekt naciskania przycisku */
+}
+
+/* Dostosowania responsywne  */
+@media (max-width: 600px) {
+    .tempo-controls button {
+        font-size: 14px;
+        padding: 12px 12px;
+    }
+}
+        
+        
+        .tempo-controls {
+            display: flex;
+            flex-direction: column; /* Zmiana na kierunek kolumny */
+            position: relative;
+            top: -270px; 
+            left: -20px;
+            
+        }
+
+/*pokretla efektow*/
+
+
+ul {
+    height: 40px;
+    left: 50%;
+    margin-left: -130px;
+    margin-top: -200px;
+    position: absolute;
+    top: 60%;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .knob1 {
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: inline-block;
+    height: 40px; /* wysokość ramki*/
+    margin: 0px 5px;
+    position: relative;
+    width: 40px; /* szerokosc ramki*/
+  }
+
+  .knob2 {
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: inline-block;
+    height: 40px; /* wysokość ramki*/
+    margin: 0px 5px;
+    position: relative;
+    width: 40px; /* szerokosc ramki*/
+  }
+
+  .knob3 {
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: inline-block;
+    height: 40px; /* wysokość ramki*/
+    margin: 0px 5px;
+    position: relative;
+    width: 40px; /* szerokosc ramki*/
+  }
+  
+  .knob1.front {
+    background: #FFF;
+    border: 2px solid #333;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 40px; /* wysokość pokretla*/
+    left: -3px;
+    position: absolute;
+    top: -5px;
+    width: 40px; /* szerokosc pokretla*/
+    
+    &:after {
+      background: #333;
+      content: "";
+      display: block;
+      height: 10px;
+      left: 18px;
+      position: absolute;
+      top: -1px;
+      transform: rotate(0deg);
+      transform-origin: 0 15px;
+      width: 3px;
+    }
+  }
+  
+  .knob1.back {
+    background: repeating-linear-gradient(-55deg, #FFF, #FFF 3px, #333 3px, #333 6px);
+  }
+
+  .knob2.front {
+    background: #FFF;
+    border: 2px solid #333;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 40px; /* wysokość pokretla*/
+    left: -3px;
+    position: absolute;
+    top: -5px;
+    width: 40px; /* szerokosc pokretla*/
+    
+    &:after {
+      background: #333;
+      content: "";
+      display: block;
+      height: 10px;
+      left: 18px;
+      position: absolute;
+      top: -1px;
+      transform: rotate(0deg);
+      transform-origin: 0 15px;
+      width: 3px;
+    }
+  }
+  
+  .knob2.back {
+    background: repeating-linear-gradient(-55deg, #FFF, #FFF 3px, #333 3px, #333 6px);
+  }
+
+  .knob3.front {
+    background: #FFF;
+    border: 2px solid #333;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 40px; /* wysokość pokretla*/
+    left: -3px;
+    position: absolute;
+    top: -5px;
+    width: 40px; /* szerokosc pokretla*/
+    
+    &:after {
+      background: #333;
+      content: "";
+      display: block;
+      height: 10px;
+      left: 18px;
+      position: absolute;
+      top: -1px;
+      transform: rotate(0deg);
+      transform-origin: 0 15px;
+      width: 3px;
+    }
+  }
+  
+  .knob3.back {
+    background: repeating-linear-gradient(-55deg, #FFF, #FFF 3px, #333 3px, #333 6px);
+  }
+
+.knob_text {
+  display: flex;
+  position: absolute;
+  top: 360px;
+  left: 305px;
+  color: white;
+}
+
+.knob_text ul {
+  list-style: none; 
+  padding: 0; /* Usuń wewnętrzne marginesy listy */
+  display: flex; /* Ustaw listę jako flex container */
+}
+
+.knob_text li {
+  margin-right: 10px; /* Dodaj odstęp między elementami listy */
+}
+
+.knob_effect {
+  display: flex;
+  position: absolute;
+  top: 398px;
+  left: 304px;
+  color: white;
+}
+
+.knob_effect ul {
+  list-style: none; 
+  padding: 0; /* Usuń wewnętrzne marginesy listy */
+  display: flex; /* Ustaw listę jako flex container */
+}
+
+.knob_effect li {
+  margin-right: 10px; /* Dodaj odstęp między elementami listy */
+}
+  /*EQUALIZER*/
+
+  .equalizer {
+    
+    display: flex;
+    justify-content: space-between;
+    width: 376px;
+    height: 30px;
+    margin-bottom: 10px;
+    position: relative;
+    top: -200px;
+    left: 20px;
+
+  }
+  
+  .equalizer.top {
+    align-items: flex-end;
+    margin-bottom: 2px;
+  }
+  
+  .equalizer.bottom {
+    align-items: flex-start;
+  }
+  
+  .equalizer .line {
+    top: 30%;
+    width: 15px;
+    height: 10px;
+    transition: height .30s;
+    box-shadow: 0 0 10px 5px #4d6df3;
+    opacity: .75;
+  }
+  
+  .equalizer.top .line {
+    background: #fff;
+  }
+  
+  .equalizer.bottom .line {
+    background: #39b6e0;
+  }
+
+  /* switch sliders */
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 32px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 25px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
